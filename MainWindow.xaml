@@ -1,0 +1,45 @@
+﻿<Window x:Class="LostArkPersonnelDistributor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LostArkPersonnelDistributor"
+        mc:Ignorable="d"
+        Title="인원 분배기" Height="800" Width="600" Background="#F4F4F9">
+
+    <Window.Resources>
+        <local:ViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource ViewModel}" Margin="20">
+        <!-- Title -->
+        <TextBlock Text="인원 분배기" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
+
+        <!-- 플레이어 추가/삭제 -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,80,0,0">
+            <Button Content="딜딜" Command="{Binding AddCommand}" CommandParameter="딜딜" Width="100" Padding="10" Margin="10"/>
+            <Button Content="딜폿" Command="{Binding AddCommand}" CommandParameter="딜폿" Width="100" Padding="10" Margin="10"/>
+            <Button Content="폿딜" Command="{Binding AddCommand}" CommandParameter="폿딜" Width="100" Padding="10" Margin="10"/>
+            <Button Content="폿폿" Command="{Binding AddCommand}" CommandParameter="폿폿" Width="100" Padding="10" Margin="10"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,160,0,0">
+            <Button Content="딜딜 삭제" Command="{Binding DeleteCommand}" CommandParameter="딜딜" Width="100" Padding="10" Margin="10"/>
+            <Button Content="딜폿 삭제" Command="{Binding DeleteCommand}" CommandParameter="딜폿" Width="100" Padding="10" Margin="10"/>
+            <Button Content="폿딜 삭제" Command="{Binding DeleteCommand}" CommandParameter="폿딜" Width="100" Padding="10" Margin="10"/>
+            <Button Content="폿폿 삭제" Command="{Binding DeleteCommand}" CommandParameter="폿폿" Width="100" Padding="10" Margin="10"/>
+        </StackPanel>
+
+        <!-- 상태 메시지 및 인원 현황 -->
+        <TextBlock Text="{Binding StatusMessage}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" TextWrapping="Wrap"/>
+
+        <!-- 인원 계산 버튼 -->
+        <Button Content="계산하기" Command="{Binding CalculateCommand}" Width="120" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0"/>
+
+        <!-- 추천 메시지 -->
+        <StackPanel VerticalAlignment="Bottom" Margin="0,20,0,30">
+            <TextBlock Text="추천 플레이어:" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding Recommendation}" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Window>
